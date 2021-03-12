@@ -69,6 +69,8 @@ public class MainActivity extends WearableActivity implements SensorEventListene
             // vibrates the watch
             vibrator.vibrate(vibrationPattern, indexInPatternToRepeat);
 
+            mSensorManager.unregisterListener(this);
+
             // 10 seconds in total, update the display every second
             CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
                 public void onTick(long millisUntilFinished) {
@@ -90,8 +92,6 @@ public class MainActivity extends WearableActivity implements SensorEventListene
                     vibrator.vibrate(vibrationPattern, indexInPatternToRepeat);
                 }
             }.start();
-
-            mSensorManager.unregisterListener(this);
         }
     }
 
